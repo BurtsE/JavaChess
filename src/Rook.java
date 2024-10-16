@@ -25,7 +25,6 @@ public class Rook extends ChessPiece {
         } else if (column == toColumn) {
             int step = -(int) Math.signum(line - toLine);
             for (int l = line + step; l < toLine; l += step) {
-                System.out.println(l);
                 if (chessBoard.board[l][column] != null) {
                     return false;
                 }
