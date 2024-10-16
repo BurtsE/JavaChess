@@ -47,7 +47,7 @@ public class Main {
 
         ChessBoard board = buildBoard();
 //        Scanner scanner = new Scanner(System.in);
-        File file = new File("C:\\Users\\burce\\IdeaProjects\\Chess\\src\\game.txt");
+        File file = new File("game.txt");
         Scanner scanner = new Scanner(file);
         System.out.println("""
                Чтобы проверить игру надо вводить команды:

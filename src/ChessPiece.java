@@ -29,5 +29,4 @@ public abstract class ChessPiece {
         ChessPiece piece = chessBoard.board[toLine][toColumn];
         return piece != null && piece.getColor().equals(this.getColor());
     }
-
 }
