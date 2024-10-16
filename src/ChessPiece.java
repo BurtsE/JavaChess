@@ -14,7 +14,7 @@ public abstract class ChessPiece {
 
     public abstract String getSymbol();
 
-    protected boolean invalidField(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
+    protected boolean invalidField(int line, int column, int toLine, int toColumn) {
 
         if (line < 0 || line > 7 || column < 0 || column > 7) {
             return true;
@@ -22,13 +22,10 @@ public abstract class ChessPiece {
         if (toLine < 0 || toLine > 7 || toColumn < 0 || toColumn > 7) {
             return true;
         }
-        if (line == toLine && column == toColumn) {
-            return true;
-        }
-        return false;
+        return line == toLine && column == toColumn;
     }
 
-    protected boolean busy(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
+    protected boolean busy(ChessBoard chessBoard, int toLine, int toColumn) {
         ChessPiece piece = chessBoard.board[toLine][toColumn];
         return piece != null && piece.getColor().equals(this.getColor());
     }

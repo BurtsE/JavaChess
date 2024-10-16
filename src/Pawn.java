@@ -10,8 +10,8 @@ public class Pawn extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        if (super.invalidField(chessBoard, line, column, toLine, toColumn) ||
-                super.busy(chessBoard, line, column, toLine, toColumn)) {
+        if (super.invalidField(line, column, toLine, toColumn) ||
+                super.busy(chessBoard,toLine, toColumn)) {
             return false;
         }
         if (color.equals("White")) {
