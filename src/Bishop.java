@@ -9,18 +9,25 @@ public class Bishop extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        if (super.invalidField(chessBoard, line, column, toLine, toColumn)) {
+        if (super.invalidField(chessBoard, line, column, toLine, toColumn) ||
+                super.busy(chessBoard, line, column, toLine, toColumn)) {
             return false;
         }
-        if (!(Math.abs(line - toLine) == Math.abs(column - toColumn) && line - toLine != 0)) {
+
+        if (!(Math.abs(line - toLine) == Math.abs(column - toColumn))) {
             return false;
         }
-        for (int i = line; i <= toLine; i += (int)Math.signum(line - toLine)) {
-            for (int j = column; j <= toColumn; j += (int)Math.signum(column - toColumn)) {
-                if (chessBoard.board[i][j] != null) {
-                    return false;
-                }
+
+        int stepl = -(int) Math.signum(line - toLine);
+        int stepc = -(int) Math.signum(column - toColumn);
+        int i = line + stepl;
+        int j = column + stepc;
+        while (i < toLine) {
+            if (chessBoard.board[i][j] != null) {
+                return false;
             }
+            i += stepl;
+            j += stepc;
         }
         return true;
     }

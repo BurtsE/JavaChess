@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
@@ -41,10 +43,12 @@ public class Main {
         return board;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         ChessBoard board = buildBoard();
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
+        File file = new File("C:\\Users\\burce\\IdeaProjects\\Chess\\src\\game.txt");
+        Scanner scanner = new Scanner(file);
         System.out.println("""
                Чтобы проверить игру надо вводить команды:
                'exit' - для выхода
@@ -88,9 +92,14 @@ public class Main {
                             board.printBoard();
                         } else System.out.println("Передвижение не удалось");
                     } catch (Exception e) {
+
                         System.out.println("Вы что-то ввели не так, попробуйте ещё раз");
+                        System.out.println(e.getMessage());
                     }
 
+                } else {
+                    System.out.println("???");
+                    board.printBoard();
                 }
             }
         }

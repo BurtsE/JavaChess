@@ -7,7 +7,8 @@ public class Horse extends ChessPiece {
     }
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        if (super.invalidField(chessBoard, line, column, toLine, toColumn)) {
+        if (super.invalidField(chessBoard, line, column, toLine, toColumn) ||
+                super.busy(chessBoard, line, column, toLine, toColumn)) {
             return false;
         }
         return Math.abs(toColumn - column) + Math.abs(toLine - line) == 3;

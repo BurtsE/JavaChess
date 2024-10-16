@@ -25,7 +25,12 @@ public abstract class ChessPiece {
         if (line == toLine && column == toColumn) {
             return true;
         }
+        return false;
+    }
+
+    protected boolean busy(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         ChessPiece piece = chessBoard.board[toLine][toColumn];
         return piece != null && piece.getColor().equals(this.getColor());
     }
+
 }

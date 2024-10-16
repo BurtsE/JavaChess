@@ -9,18 +9,23 @@ public class Rook extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        if (super.invalidField(chessBoard, line, column, toLine, toColumn)) {
+        if (super.invalidField(chessBoard, line, column, toLine, toColumn) ||
+                super.busy(chessBoard, line, column, toLine, toColumn)) {
             return false;
         }
         if (line == toLine) {
-            for (int c = column; c < toColumn; c++) {
+            int step = -(int) Math.signum(column - toColumn);
+            for (int c = column + step; c < toColumn; c += step) {
+                System.out.println(c);
                 if (chessBoard.board[line][c] != null) {
                     return false;
                 }
             }
             return true;
         } else if (column == toColumn) {
-            for (int l = line; l < toLine; l++) {
+            int step = -(int) Math.signum(line - toLine);
+            for (int l = line + step; l < toLine; l += step) {
+                System.out.println(l);
                 if (chessBoard.board[l][column] != null) {
                     return false;
                 }
